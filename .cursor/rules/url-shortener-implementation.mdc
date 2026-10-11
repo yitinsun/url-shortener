@@ -1,0 +1,23 @@
+---
+description: v1 URL shortener stack, schema, and test contract
+globs: "{pom.xml,src/**,Dockerfile,docker-compose.yml}"
+alwaysApply: false
+---
+
+# Implementation contract
+
+Read `.ai/creation/PRD.md`, `SYSTEM_DESIGN.md`, `TECH_STACK.md`, and `TESTING_PLAN.md` before changing matching files.
+
+## Stack
+
+Java 17, Spring Boot 3.3.x parent, Maven 3.9+, JPA, MySQL Connector/J, Lombok (allow-list only), `starter-test`, H2 **test** scope, JaCoCo line coverage ≥ 0.80. No Redis, Flyway, Security, Resilience4j, or Safe Browsing clients.
+
+API DTOs are Java `record`s. Repositories are parameterized JPA only (no concatenated SQL). Secrets via `${PROPERTY:DEFAULT}` as in `TECH_STACK.md`.
+
+## Domain
+
+`url_mappings` DDL and seed `56800235` from `SYSTEM_DESIGN.md` (`schema.sql`, utf8mb4). Short codes are plain Base62(id). Idempotent create for an **active** exact `longUrl`. Default TTL 730 days. GET returns 302, never 301; missing/expired → 404 JSON from the PRD.
+
+## Tests
+
+Mandatory classes and cases in `TESTING_PLAN.md`. ITs use `@ActiveProfiles("test")` (H2), not Mockito for HTTP. `mvn clean test` is the Gate 4 command.
