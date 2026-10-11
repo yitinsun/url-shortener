@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Primary Database Engine Architecture Container
+  database:
+    image: mysql:8.0
+    container_name: shortener_mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: prod_password
+      MYSQL_DATABASE: shortener_prod
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data_volume:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p=prod_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shortener_network
+
+  # Application Tier Service Engine Container
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: url_shortener_app
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=database
+      - DB_NAME=shortener_prod
+      - DB_USER=root
+      - DB_PASSWORD=prod_password
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - shortener_network
+
+volumes:
+  mysql_data_volume:
+    name: shortener_mysql_storage
+
+networks:
+  shortener_network:
+    driver: bridge
