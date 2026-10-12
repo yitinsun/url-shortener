@@ -1,22 +1,22 @@
 # Agent governance (url-shortener)
 
-This repo is run as a gated SDLC. Specs in `.ai/creation/` are **binding**. Do not invent APIs, dependencies, or coverage numbers.
+This repo is run as a gated SDLC. Specs in `.ai/greenfield/` are **binding**. Do not invent APIs, dependencies, or coverage numbers.
 
 ## Before any work
 
-1. Read `.ai/creation/INSTRUCTIONS.md` and `.ai/creation/ORCHESTRATION_MANIFEST.md`.
+1. Read `.ai/greenfield/INSTRUCTIONS.md` and `.ai/greenfield/ORCHESTRATION_MANIFEST.md`.
 2. Use the other specs only for their role:
-   - Product: `.ai/creation/PRD.md`
-   - Design: `.ai/creation/SYSTEM_DESIGN.md`
-   - Stack: `.ai/creation/TECH_STACK.md`
-   - Tests: `.ai/creation/TESTING_PLAN.md`
-   - Status: `.ai/creation/URL_SHORTENER_SUMMARY.md` (update only with real artifacts/metrics)
+   - Product: `.ai/greenfield/PRD.md`
+   - Design: `.ai/greenfield/SYSTEM_DESIGN.md`
+   - Stack: `.ai/greenfield/TECH_STACK.md`
+   - Tests: `.ai/greenfield/TESTING_PLAN.md`
+   - Status: `.ai/greenfield/URL_SHORTENER_SUMMARY.md` (update only with real artifacts/metrics)
 
 ## Gate 2 lock (Stage 3)
 
 Do **not** create or edit `pom.xml`, `src/**`, or other functional Java until the workspace root contains `GATE2_APPROVAL.txt` with a line `[APPROVED: HUMAN_ENGINEER_ID]`.
 
-Allowed before approval: `.ai/creation/**`, `AGENTS.md`, `.cursor/rules/**`, `Dockerfile`, `docker-compose.yml`, audit/metrics files.
+Allowed before approval: `.ai/greenfield/**`, `AGENTS.md`, `.cursor/rules/**`, `Dockerfile`, `docker-compose.yml`, audit/metrics files.
 
 If the file is missing, refuse to implement and tell the operator to write the approval (and optionally `git tag gate2-approved`).
 

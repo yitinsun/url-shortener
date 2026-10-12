@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Implementation contract
 
-Read `.ai/creation/PRD.md`, `SYSTEM_DESIGN.md`, `TECH_STACK.md`, and `TESTING_PLAN.md` before changing matching files.
+Read `.ai/greenfield/PRD.md`, `SYSTEM_DESIGN.md`, `TECH_STACK.md`, and `TESTING_PLAN.md` before changing matching files.
 
 ## Stack
 
