@@ -12,6 +12,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data_volume:/var/lib/mysql
+      - ./src/main/resources/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p=prod_password"]
       interval: 10s
@@ -33,6 +34,7 @@ services:
       - DB_NAME=shortener_prod
       - DB_USER=root
       - DB_PASSWORD=prod_password
+      - APP_BASE_URL=http://localhost:8080
     depends_on:
       database:
         condition: service_healthy

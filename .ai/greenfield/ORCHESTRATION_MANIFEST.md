@@ -69,7 +69,7 @@ This manifest defines the stateful execution graph, gate criteria, and governanc
 * **Trigger:** Three retries exhausted without a green `mvn clean test`.
 * **Rollback Protocol:**
   1. Halt all code write streams immediately.
-  2. Reset the workspace to the **Gate 2 snapshot** (`gate2-approved` tag, or the recorded pre-Stage-3 tree). Do not reset `.ai/creation` specs unless they changed mid-run.
+  2. Reset the workspace to the **Gate 2 snapshot** (`gate2-approved` tag, or the recorded pre-Stage-3 tree). Do not reset `.ai/greenfield` specs unless they changed mid-run.
   3. Enter **Safe-Stop Mode:** freeze background agent loops, write a high-severity entry to `SDLC_AUDIT_LOG.json`, and emit the full error trace. Do not start Stage 6.
 
 ## 4. Dynamic Re-Planning Loop

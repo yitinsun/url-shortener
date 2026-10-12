@@ -60,6 +60,6 @@ Write aggregated telemetry to `SDLC_METRICS.json` in the workspace root after ev
 
 ## 4. Work Execution Cycle (State Gate Constrained)
 
-1. **Gate 2 lock:** Do not generate functional Java sources, `pom.xml` application modules, or `src/**` until Gate 2 is approved. Approval is a workspace file `GATE2_APPROVAL.txt` (or an injected orchestrator token) containing a line of the form `[APPROVED: HUMAN_ENGINEER_ID]`. Documentation, this `.ai/creation` folder, `Dockerfile`, and `docker-compose.yml` may exist before Gate 2; they do not unlock Stage 3.
+1. **Gate 2 lock:** Do not generate functional Java sources, `pom.xml` application modules, or `src/**` until Gate 2 is approved. Approval is a workspace file `GATE2_APPROVAL.txt` (or an injected orchestrator token) containing a line of the form `[APPROVED: HUMAN_ENGINEER_ID]`. Documentation, this `.ai/greenfield` folder, `Dockerfile`, and `docker-compose.yml` may exist before Gate 2; they do not unlock Stage 3.
 2. **Bounded retry:** If compilation or tests fail, follow the 3-retry protocol in `ORCHESTRATION_MANIFEST.md`. Fix production or test code so assertions pass. Do not weaken coverage below 80%.
 3. **Lineage:** After each mutation, append to `SDLC_AUDIT_LOG.json` with the SHA-256 of the markdown file that justified the change (`PRD.md`, `SYSTEM_DESIGN.md`, `TECH_STACK.md`, or `TESTING_PLAN.md`).

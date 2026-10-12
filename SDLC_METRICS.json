@@ -1,0 +1,13 @@
+{
+  "success_rate": {
+    "compiled_ok": 3,
+    "syntax_failures": 1
+  },
+  "retry_rollback_frequency": 1,
+  "mttr_ms": 180000,
+  "stage1_epoch_ms": 1791689340000,
+  "stage7_epoch_ms": null,
+  "end_to_end_latency_ms": null,
+  "updated_at": "2026-10-12T05:15:00Z",
+  "notes": "syntax_failures=1 was Maven compiling with JAVA_HOME=JDK8; rerun used jdk-17.0.1. retry=1 was Surefire missing *IT.java causing JaCoCo < 80% then include fix. Coverage from target/site/jacoco/jacoco.csv after REFINE brownfield: 268/299 lines (89.63%). stage1_epoch_ms is Date.parse of first SDLC_AUDIT_LOG timestamp 2026-10-11T03:29:00Z. Stage 7 incomplete: stage7_epoch_ms and end_to_end_latency_ms stay null; Docker image not built this run."
+}

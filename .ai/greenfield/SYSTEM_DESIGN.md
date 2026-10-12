@@ -22,13 +22,13 @@ v1 **does not** include: HTTP rate limiting, Google Safe Browsing, code salting,
     │                                  ▼
     │                            [ MySQL 8.0 url_mappings ]
     │
-    └── GET /{shortCode} ──> [ Redirection controller ]
+    └── GET /short/{shortCode} ──> [ Redirection controller ]
                                   │
                                   ▼
                              [ Lookup by short_code ]
                                   │
                     active ──> 302 Location: long_url
-                    missing or expired ──> 404 JSON
+                    missing or expired ──> 404 HTML page
 ```
 
 The GET path stays thin: controller → service → indexed lookup. No cache in v1.
