@@ -30,30 +30,20 @@ Build a lightweight **URL Shortener microservice**. The service turns a long HTT
   ```json
   {
     "longUrl": "https://example.com/api-design/api-design-url-shortening-service/",
-    "shortUrl": "http://localhost:8080/b9K2x1",
+    "shortUrl": "http://localhost:8080/short/b9K2x1",
     "shortCode": "b9K2x1",
     "expiresAt": "2027-10-09T09:25:00Z"
   }
   ```
-  `shortUrl` is `{APP_BASE_URL}/{shortCode}`. Default `APP_BASE_URL` is `http://localhost:8080` (no trailing slash). `expiresAt` is ISO-8601 UTC.
+  `shortUrl` is `{APP_BASE_URL}/short/{shortCode}`. Default `APP_BASE_URL` is `http://localhost:8080` (no trailing slash). `expiresAt` is ISO-8601 UTC.
 
 ### 2.2 Link Redirection
 
-* **Endpoint:** `GET /{shortCode}`
+* **Endpoint:** `GET /short/{shortCode}`
 * **Behavior:**
   * If the row exists and `expires_at` is in the future, return **302 Found** with `Location: <longUrl>`.
   * Do **not** use **301**. Analytics/click counting is **out of v1**, but 302 keeps a future counter possible.
-  * If the code is missing or expired, return **404 Not Found** with:
-
-  ```json
-  {
-    "status": 404,
-    "error": "Not Found",
-    "message": "Short code not found or expired",
-    "shortCode": "b9K2x1"
-  }
-  ```
-
+  * If the code is missing or expired, return **404** with a friendly HTML page (not JSON, not Whitelabel).
   Expired reads return 404 immediately. A background cleanup job may delete stale rows later; cleanup is not required on the request path.
 
 ### 2.3 Expiration & TTL Management
@@ -66,7 +56,7 @@ Build a lightweight **URL Shortener microservice**. The service turns a long HTT
 
 ### 3.1 Availability, Latency, & Performance
 
-* Design for about **100 reads per 1 write**. Optimize `GET /{shortCode}`.
+* Design for about **100 reads per 1 write**. Optimize `GET /short/{shortCode}`.
 * Redirect **application overhead** (lookup + 302) target is **under 20 ms** under normal local load. v1 does not include a load-test gate; the unique index on `short_code` is the design control.
 
 ### 3.2 Data Consistency & Security

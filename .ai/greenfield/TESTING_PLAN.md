@@ -43,13 +43,13 @@ A global `@ControllerAdvice` must serialize the error JSON from `PRD.md` / `SYST
 | `"longUrl": "not-a-valid-url"` | **400** and error JSON `status`/`message` |
 | Self-loop to `APP_BASE_URL` | **400** |
 
-### 2.2 `GET /{shortCode}`
+### 2.2 `GET /short/{shortCode}`
 
 | Case | Setup | Assert |
 |:-----|:------|:-------|
 | Active mapping | Persist unexpired row (or create via POST) | **302** and `Location` equals `longUrl` |
-| Unknown code | GET a code that was never inserted | **404** and error JSON |
-| Expired mapping | Persist row with `expires_at` in the past | **404** (HTTP layer, not only service unit) |
+| Unknown code | GET a code that was never inserted | **404** friendly HTML (not JSON, not Whitelabel) |
+| Expired mapping | Persist row with `expires_at` in the past | **404** friendly HTML (HTTP layer, not only service unit) |
 
 ## 3. Automated Agent Workflow Cycle
 
