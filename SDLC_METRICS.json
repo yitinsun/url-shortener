@@ -1,0 +1,13 @@
+{
+  "success_rate": {
+    "compiled_ok": 4,
+    "syntax_failures": 1
+  },
+  "retry_rollback_frequency": 1,
+  "mttr_ms": 180000,
+  "stage1_epoch_ms": 1791689340000,
+  "stage7_epoch_ms": null,
+  "end_to_end_latency_ms": null,
+  "updated_at": "2026-10-16T05:20:00Z",
+  "notes": "Java 21 upgrade: mvn clean test on jdk-21.0.12.1 BUILD SUCCESS; javac release 21. Coverage still 268/299 lines (89.63%) from target/site/jacoco/jacoco.csv. syntax_failures=1 was historical JDK8 JAVA_HOME; retry=1 was Surefire *IT include. Stage 7 incomplete: stage7_epoch_ms and end_to_end_latency_ms stay null; Docker image not built this run."
+}

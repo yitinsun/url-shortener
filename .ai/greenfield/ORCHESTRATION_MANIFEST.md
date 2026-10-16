@@ -22,7 +22,7 @@ This manifest defines the stateful execution graph, gate criteria, and governanc
 
 ### Stage 1: Requirements Analysis (`PRD.md`)
 * **Agent Context:** Product Manager Agent.
-* **Exit Gate 1 (Automated):** Every functional requirement maps to a named API signature. Core constraints (Java 17, MySQL 8.0, Base62) are explicit in `PRD.md`.
+* **Exit Gate 1 (Automated):** Every functional requirement maps to a named API signature. Core constraints (Java 21, MySQL 8.0, Base62) are explicit in `PRD.md`.
 
 ### Stage 2: Architecture & Design (`SYSTEM_DESIGN.md` / `TECH_STACK.md`)
 * **Agent Context:** System Architect Agent.
@@ -50,7 +50,7 @@ This manifest defines the stateful execution graph, gate criteria, and governanc
 * **Agent Context:** Release / Platform Agent.
 * **Exit Gate 5 (Automated):**
   * `SDLC_AUDIT_LOG.json` and `SDLC_METRICS.json` exist and contain Stage 3–5 entries.
-  * `Dockerfile` builds with Java 17 and starts with `--spring.profiles.active=prod`.
+  * `Dockerfile` builds with Java 21 and starts with `--spring.profiles.active=prod`.
   * `docker-compose.yml` wires the app to MySQL 8.0 via `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` (no secrets in Java).
   * App health: process listens on **8080**.
 

@@ -1,4 +1,4 @@
-# Technology Stack Profile: Spring Boot URL Shortener (Java 17 & MySQL)
+# Technology Stack Profile: Spring Boot URL Shortener (Java 21 & MySQL)
 
 This document is the **only** allowed toolchain for v1. Packages not listed here are high-impact (see `ORCHESTRATION_MANIFEST.md` §5.1).
 
@@ -6,7 +6,7 @@ This document is the **only** allowed toolchain for v1. Packages not listed here
 
 ## 1. Core Tooling Versions
 
-* **Language Runtime:** Java 17 LTS
+* **Language Runtime:** Java 21 LTS
 * **Framework:** Spring Boot **3.3.x** (parent POM)
 * **Build System:** Apache Maven 3.9+
 * **Database Driver:** MySQL Connector/J 8.x
@@ -19,7 +19,7 @@ Use `spring-boot-starter-parent` version `3.3.x`. Do not pin starter versions se
 
 ```xml
 <properties>
-    <java.version>17</java.version>
+    <java.version>21</java.version>
     <jacoco.version>0.8.12</jacoco.version>
 </properties>
 

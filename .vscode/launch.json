@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "URL Shortener (test / H2)",
+      "request": "launch",
+      "mainClass": "com.yitinsun.urlshortener.UrlShortenerApplication",
+      "projectName": "url-shortener",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "javaExec": "C:\\Program Files\\Java\\jdk-21.0.12.1\\bin\\java.exe",
+      "classPaths": ["$Test"],
+      "vmArgs": "-Dspring.profiles.active=test",
+      "env": {
+        "APP_BASE_URL": "http://localhost:8080"
+      }
+    },
+    {
+      "type": "java",
+      "name": "URL Shortener (dev / MySQL)",
+      "request": "launch",
+      "mainClass": "com.yitinsun.urlshortener.UrlShortenerApplication",
+      "projectName": "url-shortener",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "javaExec": "C:\\Program Files\\Java\\jdk-21.0.12.1\\bin\\java.exe",
+      "vmArgs": "-Dspring.profiles.active=dev",
+      "env": {
+        "DB_HOST": "localhost",
+        "DB_NAME": "shortener_dev",
+        "DB_USER": "root",
+        "DB_PASSWORD": "Tiger",
+        "APP_BASE_URL": "http://localhost:8080"
+      }
+    },
+    {
+      "type": "java",
+      "name": "Current Java File",
+      "request": "launch",
+      "mainClass": "${file}"
+    }
+  ]
+}

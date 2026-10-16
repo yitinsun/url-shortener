@@ -5,7 +5,7 @@
 | Item | State |
 |:-----|:------|
 | Lifecycle | Gate 2 approved (`GATE2_APPROVAL.txt` = `[APPROVED: yitin]`). Stages 3–4 complete. Stage 6 compose files exist; **image not built this run**. Stage 7 incomplete. |
-| Java / `pom.xml` / tests | Present. `mvn test` green on JDK 17 (`C:\Program Files\Java\jdk-17.0.1`). |
+| Java / `pom.xml` / tests | Present. Target **Java 21**. `mvn test` green on JDK 21 (`C:\Program Files\Java\jdk-21.0.12.1`). |
 | `Dockerfile`, `docker-compose.yml` | Present (`APP_BASE_URL` + schema init on MySQL). |
 | `SDLC_AUDIT_LOG.json` / `SDLC_METRICS.json` | Written. `stage1_epoch_ms` set from first audit timestamp. `stage7_epoch_ms` and `end_to_end_latency_ms` remain **null**. |
 | Measured coverage | **268 / 299 lines (89.63%)** from `target/site/jacoco/jacoco.csv` after `mvn test`. JaCoCo check ≥ 80% passed. |
@@ -50,7 +50,7 @@
 * Single MySQL instance in compose.
 * Spring Security is a **permitAll** demo; it does not authenticate callers.
 * Browser 404s are HTML; API errors remain JSON.
-* Default `JAVA_HOME` on this machine is JDK 8 — Maven must use JDK 17.
+* Default `JAVA_HOME` on this machine is JDK 8 — Maven must use JDK 21.
 * **Validation:** `mvn test` (Surefire + JaCoCo ≥ 80%) passed. Docker image / compose up **not** claimed.
 
 ## 5. Assumptions & Limitations

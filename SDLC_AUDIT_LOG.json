@@ -1,0 +1,202 @@
+[
+  {
+    "timestamp": "2026-10-11T03:29:00Z",
+    "stage": "ARCHITECTURE",
+    "action_taken": "Created GATE2_APPROVAL.txt with [APPROVED: yitin] after operator provided engineer id.",
+    "upstream_dependency": "ORCHESTRATION_MANIFEST.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Unlock Stage 3 per AGENTS.md Gate 2 lock."
+  },
+  {
+    "timestamp": "2026-10-11T03:32:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "Created src/main/resources/db/schema.sql (3A) with utf8mb4 and AUTO_INCREMENT=56800235.",
+    "upstream_dependency": "SYSTEM_DESIGN.md",
+    "upstream_dependency_hash": "995EEF90E5935866BBA79B48326DB35DDDB27494810376C309285C38A15E6CD2",
+    "rationale": "Official DDL must be schema.sql, not Hibernate update."
+  },
+  {
+    "timestamp": "2026-10-11T03:33:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "Created Base62Encoder.java (3B) and Base62EncoderTest.java.",
+    "upstream_dependency": "SYSTEM_DESIGN.md",
+    "upstream_dependency_hash": "995EEF90E5935866BBA79B48326DB35DDDB27494810376C309285C38A15E6CD2",
+    "rationale": "Deterministic ID-to-Base62 encoding without hash-collision retries."
+  },
+  {
+    "timestamp": "2026-10-11T03:35:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "Created pom.xml, application.yml, JPA entity/repo, service, controllers, exception handler (3C).",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "39387BB07FF1BCA15FE7132AF5F45704F417FC44A218C21281C715C904641B35",
+    "rationale": "Spring Boot 3.3.5 + JPA only; records on the API boundary; secrets via ${PROPERTY:DEFAULT}."
+  },
+  {
+    "timestamp": "2026-10-11T03:38:00Z",
+    "stage": "TESTING",
+    "action_taken": "Added UrlShortenerServiceTest, UrlShortenerControllerIT, cleanup and 503 handler tests. Surefire include **/*IT.java.",
+    "upstream_dependency": "TESTING_PLAN.md",
+    "upstream_dependency_hash": "3370EB6CB4B554B385BD0AE32FDF3D3F1BE118F6989B7B5A13A11DA91FC4843D",
+    "rationale": "Mandatory Gate 4 matrix plus coverage for scheduled delete and 503 mapping."
+  },
+  {
+    "timestamp": "2026-10-11T03:39:30Z",
+    "stage": "TESTING",
+    "action_taken": "mvn test with JAVA_HOME=jdk-17.0.1: all tests passed; JaCoCo line covered 123/134 (~91.8%).",
+    "upstream_dependency": "TESTING_PLAN.md",
+    "upstream_dependency_hash": "3370EB6CB4B554B385BD0AE32FDF3D3F1BE118F6989B7B5A13A11DA91FC4843D",
+    "rationale": "Gate 4A/4B. First full run failed JaCoCo because *IT was not in Surefire defaults; repaired by include, not by disabling tests."
+  },
+  {
+    "timestamp": "2026-10-11T03:40:00Z",
+    "stage": "OBSERVABILITY",
+    "action_taken": "Aligned docker-compose APP_BASE_URL and mounted schema.sql on the MySQL service.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "39387BB07FF1BCA15FE7132AF5F45704F417FC44A218C21281C715C904641B35",
+    "rationale": "Prod profile validates schema; compose must apply official DDL and pass APP_BASE_URL."
+  },
+  {
+    "timestamp": "2026-10-11T19:36:00Z",
+    "stage": "COMPLIANCE",
+    "action_taken": "Set java.configuration.updateBuildConfiguration=automatic in .vscode/settings.json so Maven reloads when pom.xml changes.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "IDE Info diagnostic 0 on pom.xml line 1 is a stale Maven project model, not invalid POM XML."
+  },
+  {
+    "timestamp": "2026-10-11T20:05:00Z",
+    "stage": "REPAIR",
+    "action_taken": "Pinned JDT to JDK 17 Standard mode in .vscode/settings.json after reading the language-server .log.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Syntax server used JDK 8 as default VM and NPE-crashed while compiling Java records (ErrorResponse)."
+  },
+  {
+    "timestamp": "2026-10-11T20:33:00Z",
+    "stage": "REPAIR",
+    "action_taken": "Launch config URL Shortener (test / H2) now uses classPaths $Test so org.h2.Driver is on the runtime classpath.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "H2 remains test-scoped per TECH_STACK; main() with spring.profiles.active=test failed because the IDE runtime classpath omitted test dependencies."
+  },
+  {
+    "timestamp": "2026-10-11T23:40:00Z",
+    "stage": "ARCHITECTURE",
+    "action_taken": "Replaced .ai/brownfield/ADD_SWAGGER_UI.md with AAA_SWAGGER_UI.md springdoc playbook for this app.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Brownfield Swagger plan must match Boot 3.3, PRD APIs, no Security/JWT in v1, and the high-impact pom gate."
+  },
+  {
+    "timestamp": "2026-10-12T01:12:00Z",
+    "stage": "ARCHITECTURE",
+    "action_taken": "Rewrote .ai/brownfield/AAA_SWAGGER_UI.md as a standalone springdoc enhancement playbook.",
+    "upstream_dependency": "n/a",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Swagger UI is optional docs; the brownfield note should not couple to creation-gate markdown."
+  },
+  {
+    "timestamp": "2026-10-12T01:38:00Z",
+    "stage": "ARCHITECTURE",
+    "action_taken": "Renamed .ai/brownfield/AAA_SWAGGER_UI.md to ADD_SWAGGER.md.",
+    "upstream_dependency": "n/a",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "AAA_ was a sort prefix; ADD_SWAGGER names the brownfield action."
+  },
+  {
+    "timestamp": "2026-10-12T01:42:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "Added springdoc 2.6.0, OpenApiConfig, YAML, OpenAPI annotations, and /v3/api-docs IT.",
+    "upstream_dependency": "ADD_SWAGGER.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Optional Swagger UI enhancement; no Spring Security or JWT because the API is still open."
+  },
+  {
+    "timestamp": "2026-10-12T03:13:00Z",
+    "stage": "ARCHITECTURE",
+    "action_taken": "Wrote .ai/brownfield/REFACTOR.md (greenfield rename, /short/{code}, URL allowlist, friendly HTML 404).",
+    "upstream_dependency": "n/a",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Brownfield refactor playbook; implementers must update every listed related file in one change."
+  },
+  {
+    "timestamp": "2026-10-12T03:20:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "Applied REFACTOR.md: .ai/greenfield rename, GET /short/{shortCode}, LegalPathFilter, friendly HTML 404.",
+    "upstream_dependency": "REFACTOR.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Brownfield path and error-page refactor; related docs, tests, and runtime files updated together."
+  },
+  {
+    "timestamp": "2026-10-12T04:10:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "Added ENHANCE.md plus demo Spring Security, HtmlSanitizeFilter (jsoup), and 400 sanitization handling.",
+    "upstream_dependency": "ENHANCE.md",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "Optional demo of OncePerRequestFilter + Security; unsafe HTML in longUrl goes through existing 400 JSON handler."
+  },
+  {
+    "timestamp": "2026-10-12T04:50:00Z",
+    "stage": "REQUIREMENTS",
+    "action_taken": "Wrote .ai/brownfield/REFINE.md for leftover docs, lineage, metrics, and product gaps.",
+    "upstream_dependency": "n/a",
+    "upstream_dependency_hash": "n/a",
+    "rationale": "README, scenario write-ups, orchestration architecture, and honest metrics/summary still lag the running service."
+  },
+  {
+    "timestamp": "2026-10-12T05:12:00Z",
+    "stage": "TESTING",
+    "action_taken": "Ran mvn test on JDK 17 after REFINE.md code/docs. BUILD SUCCESS. JaCoCo 268/299 lines (89.63%) from target/site/jacoco/jacoco.csv.",
+    "upstream_dependency": "TESTING_PLAN.md",
+    "upstream_dependency_hash": "1C9C7AED62240BFBB0F0A11A440D0A318142C4CE9D9FB3CABC95AE5AFFE4B78C",
+    "rationale": "Gate 4 bar still >=80%; brownfield filters and Security added lines so 123/134 is obsolete."
+  },
+  {
+    "timestamp": "2026-10-12T05:14:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "REFINE R8: GET /short/{shortCode:[0-9A-Za-z]{1,10}}, actuator health+info exposure, ADD_SWAGGER.md Security permitAll correction. Skipped click_count (schema needs new human signature).",
+    "upstream_dependency": "REFINE.md",
+    "upstream_dependency_hash": "A348DEEAD0DE461F7DA3585D230A45D5C4C03363A07E9C13D9E3FDFC847DB817",
+    "rationale": "Bounded extras that do not change tables or undeclared pom deps."
+  },
+  {
+    "timestamp": "2026-10-12T05:15:00Z",
+    "stage": "OBSERVABILITY",
+    "action_taken": "Rewrote URL_SHORTENER_SUMMARY.md (R6/R7). Updated SDLC_METRICS.json: stage1_epoch_ms=1791689340000, coverage 268/299, stage7 and e2e latency null with Stage 7 incomplete note.",
+    "upstream_dependency": "REFINE.md",
+    "upstream_dependency_hash": "A348DEEAD0DE461F7DA3585D230A45D5C4C03363A07E9C13D9E3FDFC847DB817",
+    "rationale": "Honest summary and metrics; do not invent Docker or Stage 7 completion."
+  },
+  {
+    "timestamp": "2026-10-16T05:18:00Z",
+    "stage": "REPLAN",
+    "action_taken": "Operator-requested runtime bump: PRD.md and TECH_STACK.md Java 17 LTS -> Java 21 LTS. Updated INSTRUCTIONS, ORCHESTRATION_MANIFEST, ORCHESTRATION_ARCHITECTURE, README, GREENFIELD scenario, URL_SHORTENER_SUMMARY, cursor implementation rule.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "D7C12A9F14721B89D56DD98C0469C4397F7F84FE30A7181F336F763C561F9A22",
+    "rationale": "Binding specs must match the new compiler target so agents do not regenerate Java 17 artifacts."
+  },
+  {
+    "timestamp": "2026-10-16T05:19:00Z",
+    "stage": "IMPLEMENTATION",
+    "action_taken": "Set pom.xml java.version 21, .java-version 21.0.12, Dockerfile maven/temurin 21 builder and 21-jre, VS Code JDT/launch JAVA_HOME to C:\\\\Program Files\\\\Java\\\\jdk-21.0.12.1.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "D7C12A9F14721B89D56DD98C0469C4397F7F84FE30A7181F336F763C561F9A22",
+    "rationale": "Spring Boot 3.3.5 already supports Java 21; no new pom dependencies."
+  },
+  {
+    "timestamp": "2026-10-16T05:20:00Z",
+    "stage": "TESTING",
+    "action_taken": "mvn clean test with JAVA_HOME=jdk-21.0.12.1: BUILD SUCCESS, javac release 21, JaCoCo 268/299 lines (89.63%).",
+    "upstream_dependency": "TESTING_PLAN.md",
+    "upstream_dependency_hash": "1C9C7AED62240BFBB0F0A11A440D0A318142C4CE9D9FB3CABC95AE5AFFE4B78C",
+    "rationale": "Confirm the Gate 4 suite and 80% coverage bar still hold on JDK 21."
+  },
+  {
+    "timestamp": "2026-10-16T05:25:00Z",
+    "stage": "REPAIR",
+    "action_taken": "Added pom profile windows-oracle-jdk21 so maven-compiler-plugin forks C:/Program Files/Java/jdk-21.0.12.1/bin/javac when JAVA_HOME is still 8/17. Surefire jvm set to the same JDK. Confirmed mvn compile with JAVA_HOME=jdk-17.0.1 and PATH java 21.",
+    "upstream_dependency": "TECH_STACK.md",
+    "upstream_dependency_hash": "D7C12A9F14721B89D56DD98C0469C4397F7F84FE30A7181F336F763C561F9A22",
+    "rationale": "javac --release 21 is rejected by the Maven JVM when JAVA_HOME is JDK 17 even if java -version is 21."
+  }
+]

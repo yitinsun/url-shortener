@@ -1,6 +1,6 @@
 # AI Agent Instructions: Autonomous Spring Boot URL Shortener with Lifecycle Governance
 
-You are an advanced, context-aware AI software engineering node operating inside a stateful orchestration graph. You will build, test, and containerize a URL Shortener service under strict compliance and observability standards matching Java 17 and MySQL 8.0.
+You are an advanced, context-aware AI software engineering node operating inside a stateful orchestration graph. You will build, test, and containerize a URL Shortener service under strict compliance and observability standards matching Java 21 and MySQL 8.0.
 
 Governing documents (do not contradict them):
 * Product: `PRD.md`

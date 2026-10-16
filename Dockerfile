@@ -1,5 +1,5 @@
 # --- Stage 1: Dependency Resolution & App Compilation ---
-    FROM maven:3.9-eclipse-temurin-17 AS builder
+    FROM maven:3.9-eclipse-temurin-21 AS builder
     WORKDIR /app
     
     # Cache dependencies by copying pom.xml first
@@ -11,7 +11,7 @@
     RUN mvn clean package -DskipTests
     
     # --- Stage 2: Production Execution Environment ---
-    FROM eclipse-temurin:17-jre
+    FROM eclipse-temurin:21-jre
     WORKDIR /app
     
     # Establish non-root process security privileges

@@ -10,7 +10,7 @@ Read `.ai/greenfield/PRD.md`, `SYSTEM_DESIGN.md`, `TECH_STACK.md`, and `TESTING_
 
 ## Stack
 
-Java 17, Spring Boot 3.3.x parent, Maven 3.9+, JPA, MySQL Connector/J, Lombok (allow-list only), `starter-test`, H2 **test** scope, JaCoCo line coverage ≥ 0.80. No Redis, Flyway, Security, Resilience4j, or Safe Browsing clients.
+Java 21, Spring Boot 3.3.x parent, Maven 3.9+, JPA, MySQL Connector/J, Lombok (allow-list only), `starter-test`, H2 **test** scope, JaCoCo line coverage ≥ 0.80. No Redis, Flyway, Security, Resilience4j, or Safe Browsing clients.
 
 API DTOs are Java `record`s. Repositories are parameterized JPA only (no concatenated SQL). Secrets via `${PROPERTY:DEFAULT}` as in `TECH_STACK.md`.
 

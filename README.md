@@ -1,16 +1,16 @@
 # url-shortener
 
-Gated SDLC workspace and a Spring Boot **URL shortener** service (Java 17, MySQL 8 / H2 for tests).
+Gated SDLC workspace and a Spring Boot **URL shortener** service (Java 21, MySQL 8 / H2 for tests).
 
 Agents follow `.ai/greenfield/` (build from spec) and `.ai/brownfield/` (later changes). The running process is ordinary Spring Boot: no LLM inside the JAR.
 
 ## Requirements
 
-- JDK **17** (`JAVA_HOME`, e.g. `C:\Program Files\Java\jdk-17.0.1`)
+- JDK **21** (`JAVA_HOME`, e.g. `C:\Program Files\Java\jdk-21.0.12.1`)
 - Apache Maven 3.9+
 - Optional: Docker Desktop (compose)
 
-ATTENTION: Set `JAVA_HOME` to 17 before Maven.
+ATTENTION: Maven uses `JAVA_HOME`, not `java` on PATH. Set `JAVA_HOME` to JDK **21** (`C:\Program Files\Java\jdk-21.0.12.1`). If `java -version` is 21 but `mvn` fails with `release version 21 not supported`, the shell still has JAVA_HOME on 8 or 17 — open a new terminal, or keep using this repo: `pom.xml` profile `windows-oracle-jdk21` forks javac to that JDK 21 folder when it exists.
 
 ## Tests
 

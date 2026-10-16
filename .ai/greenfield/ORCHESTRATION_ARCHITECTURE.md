@@ -11,7 +11,7 @@ operator
 agent (Cursor)  ──reads──►  .ai/greenfield  .ai/brownfield  AGENTS.md
    │                         writes src/, pom, tests, logs
    ▼
-Maven (JDK 17) / optional Docker Compose
+Maven (JDK 21) / optional Docker Compose
 ```
 
 ## DAG and what each gate produced

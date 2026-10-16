@@ -67,6 +67,6 @@ Build a lightweight **URL Shortener microservice**. The service turns a long HTT
 
 ## 4. Technical Grounding
 
-* **Runtime:** Java 17.
+* **Runtime:** Java 21.
 * **Persistence:** MySQL 8.0 InnoDB, **utf8mb4**.
 * **Encoding:** Base62 as specified in `SYSTEM_DESIGN.md`.
