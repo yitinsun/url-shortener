@@ -2,6 +2,8 @@
 
 This repo is run as a gated SDLC. Specs in `.ai/greenfield/` are **binding**. Do not invent APIs, dependencies, or coverage numbers.
 
+Reusable SOP / blueprint (next Spring Boot app): `.assets/sop/spring-boot-agentic-sdlc/`. How to use later: `.assets/HOW_TO_USE.md`. Cursor skill loader: `.cursor/skills/spring-boot-agentic-sdlc/SKILL.md`. `.assets/*.JPG` are screenshots only.
+
 ## Before any work
 
 1. Read `.ai/greenfield/INSTRUCTIONS.md` and `.ai/greenfield/ORCHESTRATION_MANIFEST.md`.
